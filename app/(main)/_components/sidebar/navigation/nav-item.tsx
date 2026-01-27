@@ -20,8 +20,9 @@ interface INavItemProps {
 const NavItem = ({ name, link, icon }: INavItemProps) => {
   const pathname = usePathname();
   const onPage: boolean =
-    (pathname.includes(link) && link != "/") ||
-    (pathname == "/" && link == "/");
+    pathname === link ||
+    pathname.startsWith(link + "/") ||
+    (pathname === "/" && link === "/");
 
   const Icon = icon;
 
@@ -36,6 +37,7 @@ const NavItem = ({ name, link, icon }: INavItemProps) => {
       </span>
       <Link
         href={link}
+        aria-current={onPage ? "page" : undefined}
         className={`flex size-full items-center justify-center rounded-md transition-colors duration-300 ease-in-out ${onPage ? "bg-app-400/25 text-app-400" : "text-app-300"}`}
       >
         <Icon className="size-6" />

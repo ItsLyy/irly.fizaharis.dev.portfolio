@@ -31,7 +31,7 @@ const socials = [
   },
   {
     name: "github",
-    link: "https://www.instagram.com/https://github.com/ItsLyy",
+    link: "https://github.com/ItsLyy",
     icon: GithubLogoIcon,
   },
 ];
@@ -39,17 +39,32 @@ const socials = [
 const MediaSocials = ({ className = "" }: { className?: string }) => (
   <div className={`grid grid-cols-4 gap-2 ${className}`}>
     {socials.map((social) => (
-      <SocialBadge key={social.name} link={social.link} icon={social.icon} />
+      <SocialBadge
+        key={social.name}
+        name={social.name}
+        link={social.link}
+        icon={social.icon}
+      />
     ))}
   </div>
 );
 
-const SocialBadge = ({ icon, link }: { icon: Icon; link: string }) => {
+const SocialBadge = ({
+  name,
+  icon,
+  link,
+}: {
+  name: string;
+  icon: Icon;
+  link: string;
+}) => {
   const Icon = icon;
   return (
     <a
       href={link}
       target="_blank"
+      rel="noreferrer"
+      aria-label={name}
       className="border-app-100 from-app-100/10 to-app-100/20 text-app-100 flex size-11 items-center justify-center rounded-xs border bg-radial"
     >
       <Icon weight="duotone" className="size-6" />
