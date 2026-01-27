@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 @theme {
-  --color-app-100: #C6D0F5;
-  --color-app-150: #C6D0F5;
-  --color-app-200: #A5ADCE;
+  --color-app-100: #c6d0f5;
+  --color-app-150: #c6d0f5;
+  --color-app-200: #a5adce;
   --color-app-250: #737994;
-  --color-app-300: #51576D;
-  --color-app-400: #CA9EE6;
+  --color-app-300: #51576d;
+  --color-app-400: #ca9ee6;
   --color-app-500: #303446;
 
   --font-sans: var(--font-space-grotesk);
 }
 
 @layer base {
-  html {
+  body {
+    color: var(--color-app-100);
     background: var(--color-app-500);
   }
 }
