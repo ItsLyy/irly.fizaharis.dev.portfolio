@@ -1,5 +1,16 @@
-import type { Metadata } from "next";
+/**
+ * Node Modules
+ */
 import { Space_Grotesk } from "next/font/google";
+
+/**
+ * Types
+ */
+import type { Metadata } from "next";
+
+/**
+ * Styles
+ */
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -9,7 +20,8 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "LYY.DEV",
-  description: "Portfolio website showcasing my projects, skills, and experience as a developer.",
+  description:
+    "Portfolio website showcasing my projects, skills, and experience as a developer.",
 };
 
 export default function RootLayout({
@@ -19,9 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${spaceGrotesk.variable} antialiased`}
-      >
+      <body className={`${spaceGrotesk.className} antialiased`}>
         {children}
       </body>
     </html>
