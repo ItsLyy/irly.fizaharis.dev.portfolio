@@ -2,6 +2,7 @@
  * Node Modules
  */
 import { Space_Grotesk } from "next/font/google";
+import { Toaster } from "sonner";
 
 /**
  * Types
@@ -33,6 +34,14 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${spaceGrotesk.className} antialiased`}>
         {children}
+        <Toaster
+          richColors
+          position="bottom-center"
+          theme="dark"
+          toastOptions={{
+            className: `${spaceGrotesk.className}`,
+          }}
+        />
       </body>
     </html>
   );
