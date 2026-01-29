@@ -1,40 +1,12 @@
 /**
- * Node Modules
+ * Data
  */
-import {
-  EnvelopeSimpleIcon,
-  GithubLogoIcon,
-  InstagramLogoIcon,
-  LinkedinLogoIcon,
-} from "@phosphor-icons/react/dist/ssr";
+import { socials } from "@/app/_data/get-all-socials";
 
 /**
  * Types
  */
 import type { Icon } from "@phosphor-icons/react";
-
-const socials = [
-  {
-    name: "email",
-    link: "mailto:irly.fizaharis.dev@gmail.com",
-    icon: EnvelopeSimpleIcon,
-  },
-  {
-    name: "instagram",
-    link: "https://www.instagram.com/irlydev/",
-    icon: InstagramLogoIcon,
-  },
-  {
-    name: "linkedin",
-    link: "https://www.linkedin.com/in/irly-fizaharis-aa8896298/",
-    icon: LinkedinLogoIcon,
-  },
-  {
-    name: "github",
-    link: "https://github.com/ItsLyy",
-    icon: GithubLogoIcon,
-  },
-];
 
 const MediaSocials = ({ className = "" }: { className?: string }) => (
   <div className={`grid grid-cols-4 gap-2 ${className}`}>
@@ -65,9 +37,12 @@ const SocialBadge = ({
       target="_blank"
       rel="noreferrer"
       aria-label={name}
-      className="border-app-100 from-app-100/10 to-app-100/20 text-app-100 flex size-11 items-center justify-center rounded-xs border bg-radial"
+      className="border-app-100 group from-app-100/10 to-app-100/20 text-app-100 flex size-11 items-center justify-center rounded-xs border bg-radial"
     >
-      <Icon weight="duotone" className="size-6" />
+      <Icon
+        weight="duotone"
+        className="size-6 transition-discrete duration-300 ease-in-out group-hover:scale-110"
+      />
     </a>
   );
 };

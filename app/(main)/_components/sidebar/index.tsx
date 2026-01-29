@@ -6,7 +6,7 @@ const Sidebar = () => {
   return (
     <aside
       aria-label="Sidebar"
-      className="sticky top-0 flex h-dvh flex-col items-end p-3 pb-6 transition-all duration-300 ease-in-out md:py-4"
+      className="sticky top-0 flex h-dvh flex-col items-end p-1 pb-6 transition-all duration-300 ease-in-out md:p-3 md:pt-4"
     >
       <Header />
       <Navigation />
