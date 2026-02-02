@@ -1,3 +1,6 @@
+/**
+ * Node Modules
+ */
 import Image from "next/image";
 
 const Header = () => {
@@ -10,7 +13,7 @@ const Header = () => {
           src="/images/profile-headshot.jpeg"
           alt="Profile Headshot"
           fill
-          className="transition-discrete duration-300 ease-in-out group-hover:scale-110"
+          className="bg-app-500 transition-discrete duration-300 ease-in-out group-hover:scale-110"
         />
       </div>
     </div>

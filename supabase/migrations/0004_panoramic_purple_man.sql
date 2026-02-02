@@ -1,0 +1,1 @@
+ALTER TABLE "projects" RENAME COLUMN "content" TO "content_path";

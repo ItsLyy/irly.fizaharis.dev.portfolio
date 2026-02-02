@@ -5,14 +5,33 @@ import Contact from "./_components/homepage/contact";
 import Timelines from "./_components/homepage/timelines";
 import Header from "./_components/homepage/header";
 import Technologies from "./_components/homepage/technologies";
+import Projects from "./_components/homepage/projects";
 
 /**
  * Data
  */
 import { educations } from "../_data/get-all-educations";
 import { experiences } from "../_data/get-all-experiences";
+import getAllProjects from "../_data/project/get-all-projects";
 
-export default function Home() {
+/**
+ * Types
+ */
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Irly Fizaharis — Front-end web developer. Projects, skills, education, and experience. Based in Bandung, Indonesia.",
+  openGraph: {
+    title: "Irly Fizaharis | Front-end Developer",
+    description:
+      "Portfolio of Irly Fizaharis. Projects, skills, education, and experience.",
+  },
+};
+
+export default async function Home() {
+  const { projects } = await getAllProjects({});
   return (
     <div className="space-y-8">
       <Header
@@ -27,6 +46,7 @@ export default function Home() {
         </p>
       </section>
       <Technologies />
+      {projects.length > 0 && <Projects projects={projects} />}
       <Timelines title="EDUCATIONs" datas={educations} />
       <Timelines title="EXPERIENCEs" datas={experiences} />
       <Contact />

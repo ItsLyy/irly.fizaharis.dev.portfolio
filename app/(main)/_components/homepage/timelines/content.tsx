@@ -1,3 +1,6 @@
+/**
+ * Node Modules
+ */
 import Image from "next/image";
 
 interface IContentProps {

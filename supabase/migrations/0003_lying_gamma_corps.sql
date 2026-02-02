@@ -1,0 +1,1 @@
+ALTER TABLE "projects" ADD COLUMN "content" text NOT NULL;

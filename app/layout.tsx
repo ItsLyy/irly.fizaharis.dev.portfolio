@@ -5,6 +5,11 @@ import { Space_Grotesk } from "next/font/google";
 import { Toaster } from "sonner";
 
 /**
+ * Custom Modules
+ */
+import { defaultMetadata } from "./_lib/metadata";
+
+/**
  * Types
  */
 import type { Metadata } from "next";
@@ -20,9 +25,15 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "LYY.DEV",
-  description:
-    "Portfolio website showcasing my projects, skills, and experience as a developer.",
+  ...defaultMetadata,
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Irly Fizaharis",
+  description: defaultMetadata.description,
+  url: defaultMetadata.metadataBase?.toString(),
 };
 
 export default function RootLayout({
@@ -32,6 +43,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${spaceGrotesk.className} antialiased`}>
         {children}
         <Toaster

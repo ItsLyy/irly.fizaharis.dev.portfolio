@@ -1,3 +1,6 @@
+/**
+ * Custom Modules
+ */
 import MediaSocials from "../../media-socials";
 import Form from "./form";
 
