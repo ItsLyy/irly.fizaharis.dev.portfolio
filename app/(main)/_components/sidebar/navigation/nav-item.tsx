@@ -3,12 +3,8 @@
 /**
  * Node Modules
  */
-import Link from "next/link";
-
-/**
- * Types
- */
 import { Icon } from "@phosphor-icons/react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface INavItemProps {

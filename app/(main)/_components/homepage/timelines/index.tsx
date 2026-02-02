@@ -1,3 +1,6 @@
+/**
+ * Custom Modules
+ */
 import Section from "../section";
 import Content from "./content";
 

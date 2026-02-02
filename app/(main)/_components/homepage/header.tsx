@@ -1,8 +1,15 @@
-import Logo from "@/app/_components/ui/logo";
+/**
+ * Node Modules
+ */
 import {
   FlagBannerFoldIcon,
   MapPinSimpleIcon,
 } from "@phosphor-icons/react/dist/ssr";
+
+/**
+ * Custom Modules
+ */
+import Logo from "@/app/_components/ui/logo";
 
 const Header = ({
   role = "Front-end Web Developer",

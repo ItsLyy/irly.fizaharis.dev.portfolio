@@ -1,3 +1,6 @@
+/**
+ * Types
+ */
 import type { Icon } from "@tabler/icons-react";
 
 interface ICardProps {
