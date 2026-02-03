@@ -6,7 +6,6 @@ import { Suspense } from "react";
 /**
  * Custom Modules
  */
-import CardProject from "../../projects/_components/card-project";
 import CardProjectSkeleton from "../../projects/_components/card-project-skeleton";
 import ProjectsGroup from "../../projects/_components/projects-group";
 import Section from "./section";
@@ -22,6 +21,7 @@ type ICardProjectProps = Pick<
 >;
 
 const Projects = ({ projects }: { projects: ICardProjectProps[] }) => {
+  if (!projects) return;
   return (
     <Section title="PROJECTs">
       <div className="mt-2 grid grid-cols-3 gap-2">
