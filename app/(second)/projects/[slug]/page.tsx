@@ -87,7 +87,9 @@ export default async function DetailProjects({
         <div className="my-2 grid grid-cols-2">
           <StacksGroup stacks={project.stacks} />
           <div className="flex justify-end">
-            <span className="text-app-300 text-sm">{project.createdAt}</span>
+            <span className="text-app-300 text-sm">
+              {new Date(project.createdAt).toDateString()}
+            </span>
           </div>
         </div>
       </header>
