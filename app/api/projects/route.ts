@@ -3,7 +3,7 @@
  */
 import { writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
-import { like } from "drizzle-orm";
+import { like, sql } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
 /**
@@ -20,8 +20,9 @@ export async function GET(req: NextRequest) {
   try {
     const { searchParams } = req.nextUrl;
     const query = searchParams.get("q") || "";
+    const limit = parseInt(searchParams.get("limit") || "0");
 
-    const data = await db
+    let data = db
       .select({
         id: projects.id,
         name: projects.name,
@@ -30,11 +31,14 @@ export async function GET(req: NextRequest) {
         stacks: projects.stacks,
       })
       .from(projects)
-      .where(like(projects.name, `%${query}%`));
+      .where(like(projects.name, `%${query}%`))
+      .$dynamic();
+
+    if (limit > 0) data = data.limit(limit);
 
     return NextResponse.json({
       message: "Projects successfully retrieve.",
-      projects: data,
+      projects: await data,
     });
   } catch (error) {
     return NextResponse.json(

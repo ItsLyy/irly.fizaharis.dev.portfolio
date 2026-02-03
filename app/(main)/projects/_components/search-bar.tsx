@@ -6,7 +6,7 @@ import { MagnifyingGlassIcon } from "@phosphor-icons/react/dist/ssr";
 const Searchbar = () => {
   return (
     <form
-      action="/search"
+      action="/projects"
       className="border-app-300 flex items-center rounded-md border"
     >
       <MagnifyingGlassIcon
