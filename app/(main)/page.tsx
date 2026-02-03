@@ -30,6 +30,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 3600;
+
 export default async function Home() {
   const { projects } = await getAllProjects({ limit: 3 });
   return (
@@ -46,7 +48,7 @@ export default async function Home() {
         </p>
       </section>
       <Technologies />
-      {projects?.length > 0 && <Projects projects={projects} />}
+      <Projects projects={projects} />
       <Timelines title="EDUCATIONs" datas={educations} />
       <Timelines title="EXPERIENCEs" datas={experiences} />
       <Contact />

@@ -15,7 +15,7 @@ type IProjectsGroupProps = Pick<
 const ProjectsGroup = ({ projects }: { projects: IProjectsGroupProps[] }) => {
   return (
     <>
-      {projects.map((project) => (
+      {projects?.map((project) => (
         <CardProject key={project.slug} {...project} />
       ))}
     </>
