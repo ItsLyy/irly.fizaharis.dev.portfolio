@@ -10,7 +10,7 @@ const StacksGroup = ({ stacks }: { stacks: string[] }) => {
         <StackBadge
           key={index}
           name={stack}
-          className="h-fit !rounded-sm !px-2 !text-sm !leading-tight"
+          className="h-fit rounded-sm! px-2! text-sm! leading-tight!"
         />
       ))}
     </div>

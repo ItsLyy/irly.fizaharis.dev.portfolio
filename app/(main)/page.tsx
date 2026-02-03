@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const { projects } = await getAllProjects({});
+  const { projects } = await getAllProjects({ limit: 3 });
   return (
     <div className="space-y-8">
       <Header
@@ -46,7 +46,7 @@ export default async function Home() {
         </p>
       </section>
       <Technologies />
-      {projects.length > 0 && <Projects projects={projects} />}
+      {projects?.length > 0 && <Projects projects={projects} />}
       <Timelines title="EDUCATIONs" datas={educations} />
       <Timelines title="EXPERIENCEs" datas={experiences} />
       <Contact />

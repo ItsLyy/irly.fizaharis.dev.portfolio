@@ -5,6 +5,7 @@ import {
   IconBrandFigma,
   IconBrandNextjs,
   IconBrandReact,
+  IconBrandSupabase,
   IconBrandTailwind,
 } from "@tabler/icons-react";
 
@@ -26,6 +27,10 @@ const technologies = [
   {
     name: "Tailwindcss",
     icon: IconBrandTailwind,
+  },
+  {
+    name: "Supabase",
+    icon: IconBrandSupabase,
   },
   {
     name: "Figma",
