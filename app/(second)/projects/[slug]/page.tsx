@@ -66,10 +66,10 @@ export default async function DetailProjects({
   const content = await getContentProject(project.contentPath);
 
   return (
-    <section>
-      <header className="mt-8 mb-4">
+    <section className="p-2">
+      <header className="mt-3 mb-4">
         <GoBackButton />
-        <div className="mt-8 mb-2 flex justify-between">
+        <div className="mt-6 mb-2 flex justify-between">
           <h1 className="text-4xl font-medium">{project.name}</h1>
           <CallToAction
             linkGithub={project.githubLink}
