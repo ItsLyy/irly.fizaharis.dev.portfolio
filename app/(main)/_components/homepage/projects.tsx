@@ -24,7 +24,7 @@ const Projects = ({ projects }: { projects: ICardProjectProps[] }) => {
   if (!projects) return;
   return (
     <Section title="PROJECTs">
-      <div className="mt-2 grid grid-cols-3 gap-2">
+      <div className="mt-2 grid grid-cols-1 gap-2 md:grid-cols-3">
         <Suspense fallback={<CardProjectSkeleton />}>
           <ProjectsGroup projects={projects} />
         </Suspense>
