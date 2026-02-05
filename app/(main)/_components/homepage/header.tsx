@@ -23,10 +23,10 @@ const Header = ({
   return (
     <header className="space-y-4">
       <div className="space-y-1">
-        <div className="flex flex-wrap gap-4 font-medium *:text-5xl">
+        <div className="flex flex-wrap items-center gap-2 font-medium *:text-3xl md:gap-5 md:*:text-5xl">
           <h1 className="text-nowrap">Hi👋, I'm</h1>
           <div className="flex items-center gap-2">
-            <Logo />
+            <Logo className="scale-80 md:scale-100" />
             <h1 className="text-app-400 text-nowrap">Irly Fizaharis</h1>
           </div>
         </div>

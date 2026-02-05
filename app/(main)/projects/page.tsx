@@ -43,7 +43,7 @@ export default async function Projects({
       <header>
         <Searchbar />
       </header>
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
         <Suspense fallback={<CardProjectSkeleton />}>
           <ProjectsGroup projects={projects} />
         </Suspense>
