@@ -37,14 +37,14 @@ export default async function Home() {
   return (
     <div className="space-y-8">
       <Header
-        role="Front-end Web Developer"
+        role="Front-end Developer"
         location="Bandung, Indonesia"
         experience={new Date().getFullYear() - 2022}
       />
       <section aria-label="About Me">
         <p className="font-medium">
-          I’m a Front-end web developer who loves coding and technology. I’m
-          always learning new tools and enjoy solving new problems.
+          I’m a Front-end developer who loves coding and technology. I’m always
+          learning new tools and enjoy solving new problems.
         </p>
       </section>
       <Technologies />
