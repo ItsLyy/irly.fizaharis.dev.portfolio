@@ -10,9 +10,12 @@ import { notFound } from "next/navigation";
 import MarkdownRenderer from "@/app/_components/general/markdown-renderer";
 import CallToAction from "./_components/call-to-action";
 import getContentProject from "@/app/_data/project/get-content-project";
-import getProject from "@/app/_data/project/get-project";
+import getProject, {
+  getAllProjectSlugs,
+} from "@/app/_data/project/get-project";
 import GoBackButton from "./_components/go-back-button";
 import StacksGroup from "./_components/stacks-group";
+import FadeIn from "@/app/_components/motion/fade-in";
 import { defaultMetadata } from "@/app/_lib/metadata";
 
 /**
@@ -21,6 +24,14 @@ import { defaultMetadata } from "@/app/_lib/metadata";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ slug: string }> };
+
+export const revalidate = 3600;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  const slugs = await getAllProjectSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -50,6 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       card: "summary_large_image",
       title: `${title} | Irly Fizaharis`,
       description,
+      images: [imagePath],
     },
   };
 }
@@ -65,37 +77,70 @@ export default async function DetailProjects({
 
   const content = await getContentProject(project.contentPath);
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: defaultMetadata.metadataBase?.toString() ?? "",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Projects",
+        item: `${defaultMetadata.metadataBase?.toString() ?? ""}/projects`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.name,
+        item: `${defaultMetadata.metadataBase?.toString() ?? ""}/projects/${project.slug}`,
+      },
+    ],
+  };
+
   return (
-    <section className="p-2">
-      <header className="mt-3 mb-4">
-        <GoBackButton />
-        <div className="mt-6 mb-2 flex justify-between">
-          <h1 className="text-4xl font-medium">{project.name}</h1>
-          <CallToAction
-            linkGithub={project.githubLink}
-            linkWebsite={project.websiteLink}
-          />
-        </div>
-        <div className="relative aspect-video w-full overflow-hidden rounded-md">
-          <Image
-            src={project.imagePath}
-            alt={project.name}
-            fill
-            className="bg-app-300 size-full transition-discrete duration-300 ease-in-out hover:scale-105"
-          />
-        </div>
-        <div className="my-2 grid grid-cols-2">
-          <StacksGroup stacks={project.stacks} />
-          <div className="flex justify-end">
-            <span className="text-app-300 text-sm">
-              {new Date(project.createdAt).toDateString()}
-            </span>
+    <FadeIn>
+      <section className="p-2">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        />
+        <header className="mt-3 mb-4">
+          <GoBackButton />
+          <div className="mt-6 mb-2 flex justify-between">
+            <h1 className="text-4xl font-medium">{project.name}</h1>
+            <CallToAction
+              linkGithub={project.githubLink}
+              linkWebsite={project.websiteLink}
+            />
           </div>
+          <div className="relative aspect-video w-full overflow-hidden rounded-md">
+            <Image
+              src={project.imagePath}
+              alt={project.name}
+              fill
+              priority
+              sizes="(min-width: 768px) 720px, 100vw"
+              className="bg-sunken size-full object-cover transition-discrete duration-300 ease-in-out hover:scale-105"
+            />
+          </div>
+          <div className="my-2 grid grid-cols-2">
+            <StacksGroup stacks={project.stacks} />
+            <div className="flex justify-end">
+              <span className="text-dim text-sm">
+                {new Date(project.createdAt).toDateString()}
+              </span>
+            </div>
+          </div>
+        </header>
+        <div className="pt-2 pb-24">
+          <MarkdownRenderer content={content} />
         </div>
-      </header>
-      <div className="pt-2 pb-24">
-        <MarkdownRenderer content={content} />
-      </div>
-    </section>
+      </section>
+    </FadeIn>
   );
 }

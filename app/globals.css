@@ -1,20 +1,72 @@
 @import "tailwindcss";
 
 @theme {
-  --color-app-100: #c6d0f5;
-  --color-app-150: #c6d0f5;
-  --color-app-200: #a5adce;
-  --color-app-250: #737994;
-  --color-app-300: #51576d;
-  --color-app-400: #ca9ee6;
-  --color-app-500: #303446;
+  /* --- Surfaces --- */
+  --color-background: #303446; /* page base (was app-500) */
+  --color-surface: #353b4f; /* inputs, cards, wells */
+  --color-raised: #3b4158; /* hover / emphasized panels */
+  --color-sunken: #2a2f40; /* placeholders, image fills, skeletons */
 
+  /* --- Structure --- */
+  --color-border: #454d68; /* 1px structural lines */
+  --color-border-strong: #a5adce; /* strong borders / focus (was app-200) */
+
+  /* --- Text --- */
+  --color-foreground: #c6d0f5; /* primary text (was app-100) */
+  --color-muted: #a5adce; /* secondary body / icons (was app-200) */
+  --color-faint: #737994; /* tertiary / meta text (was app-250) */
+  --color-dim: #51576d; /* placeholders, disabled (was app-300 text) */
+  --color-ink: #232536; /* text on light / accent surfaces */
+
+  /* --- Accent --- */
+  --color-accent: #ca9ee6; /* interactive / identity (was app-400) */
+
+  /* --- Typography --- */
   --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+
   body {
-    color: var(--color-app-100);
-    background: var(--color-app-500);
+    color: var(--color-foreground);
+    background: var(--color-background);
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) var(--color-background);
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--color-background);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 9999px;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-strong);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
   }
 }

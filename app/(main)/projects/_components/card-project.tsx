@@ -1,14 +1,18 @@
+"use client";
+
 /**
  * Node Modules
  */
-import { ArrowRightIcon, TagIcon } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRightIcon, TagIcon } from "@phosphor-icons/react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 /**
  * Custom Modules
  */
-import StackBadge from "@/app/_components/ui/stack-badge";
+import Badge from "@/app/_components/ui/badge";
+import Card from "@/app/_components/ui/card";
 
 /**
  * Types
@@ -22,33 +26,50 @@ type ICardProjectProps = Pick<
 
 const CardProject = ({ name, slug, stacks, imagePath }: ICardProjectProps) => {
   return (
-    <Link
-      href={`/projects/${slug}`}
-      className="border-app-300 group w-full cursor-pointer overflow-hidden rounded-md border-[0.5px] shadow-[0_0_10px_.5px] shadow-black/10"
+    <motion.div
+      whileHover={{ y: -3 }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
+      className="h-full w-full"
     >
-      <div className="relative aspect-video w-full">
-        <Image
-          src={imagePath}
-          alt={name}
-          className="bg-app-300 origin-bottom object-cover transition-discrete duration-300 ease-in-out group-hover:scale-105"
-          fill
-        />
-      </div>
-      <div className="space-y-2 pt-2 pr-3 pb-3 pl-2">
-        <div className="flex items-center justify-between">
-          <h2 className="text-base group-hover:underline">{name}</h2>
-          <ArrowRightIcon className="transition-discrete duration-300 ease-in-out group-hover:-rotate-45" />
-        </div>
-        <div className="flex gap-2">
-          <TagIcon weight="duotone" className="text-app-250 shrink-0" />
-          <div className="flex flex-wrap gap-1">
-            {stacks.map((stack, index) => (
-              <StackBadge key={index} name={stack} />
-            ))}
+      <Link href={`/projects/${slug}`} className="group block h-full w-full">
+        <Card
+          hover={false}
+          className="group-hover:border-border-strong flex h-full flex-col justify-between transition-colors duration-200"
+        >
+          <div>
+            <div className="border-border/60 bg-sunken relative aspect-video w-full overflow-hidden border-b">
+              <Image
+                src={imagePath}
+                alt={name}
+                sizes="(min-width: 1024px) 380px, (min-width: 768px) 50vw, 100vw"
+                priority={false}
+                className="bg-sunken object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                fill
+              />
+            </div>
+            <div className="space-y-2.5 p-3.5">
+              <div className="flex items-center justify-between gap-2">
+                <h3 className="text-foreground group-hover:text-accent text-base font-medium transition-colors">
+                  {name}
+                </h3>
+                <ArrowRightIcon className="text-muted group-hover:text-accent size-4 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </div>
+              <div className="flex items-center gap-1.5 pt-0.5">
+                <TagIcon
+                  weight="duotone"
+                  className="text-faint size-3.5 shrink-0"
+                />
+                <div className="flex flex-wrap gap-1">
+                  {stacks.map((stack, index) => (
+                    <Badge key={index} name={stack} />
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </Link>
+        </Card>
+      </Link>
+    </motion.div>
   );
 };
 

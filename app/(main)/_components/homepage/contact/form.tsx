@@ -3,7 +3,10 @@
 /**
  * Node Modules
  */
-import { PaperPlaneTiltIcon } from "@phosphor-icons/react/dist/ssr";
+import {
+  CheckCircleIcon,
+  PaperPlaneTiltIcon,
+} from "@phosphor-icons/react/dist/ssr";
 import { z } from "zod";
 import { toast } from "sonner";
 import { useState } from "react";
@@ -14,27 +17,31 @@ import emailjs from "@emailjs/browser";
  */
 import InputField from "@/app/_components/ui/input-field";
 import TextArea from "@/app/_components/ui/text-area";
+import { buttonStyles } from "@/app/_components/ui/button";
 
 const SendSchema = z.object({
   name: z
-    .string("Name must be character")
-    .min(3, "Name need at least 3 characters")
-    .max(30, "Name need less than 30 characters"),
-  email: z.email("Email must be valid"),
+    .string()
+    .min(2, "Name needs at least 2 characters")
+    .max(50, "Name needs to be less than 50 characters"),
+  email: z.string().email("Please provide a valid email address"),
   message: z
-    .string("Message must be character")
-    .min(1, "Message required")
-    .max(300, "Message need less than 300 characters"),
+    .string()
+    .min(5, "Message must be at least 5 characters")
+    .max(1000, "Message needs to be less than 1000 characters"),
 });
 
 const Form = () => {
   const [pending, setPending] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setPending(true);
 
     try {
-      const formData = new FormData(e.currentTarget);
+      const formElement = e.currentTarget;
+      const formData = new FormData(formElement);
 
       const validatedData = SendSchema.safeParse({
         name: formData.get("name"),
@@ -62,65 +69,109 @@ const Form = () => {
         },
       );
 
-      return toast.success("Successful!", {
-        description: "Message successfully sent",
+      formElement.reset();
+      setSubmitted(true);
+      toast.success("Message sent!", {
+        description: "Thank you! I'll get back to you soon.",
       });
-    } catch (error) {
-      toast.error("Something went wrong!");
+    } catch {
+      toast.error("Something went wrong!", {
+        description: "Please try reaching out directly via email.",
+      });
     } finally {
       setPending(false);
     }
   };
 
+  if (submitted) {
+    return (
+      <div className="border-border bg-surface/60 space-y-3 rounded-sm border p-6 text-center">
+        <div className="bg-accent/15 text-accent inline-flex size-12 items-center justify-center rounded-full">
+          <CheckCircleIcon className="size-6" weight="duotone" />
+        </div>
+        <h4 className="text-foreground text-lg font-medium">
+          Message received!
+        </h4>
+        <p className="text-muted mx-auto max-w-md text-sm">
+          Thank you for reaching out. I&apos;ve received your message and will
+          respond as soon as possible.
+        </p>
+        <div className="pt-2">
+          <button
+            type="button"
+            onClick={() => setSubmitted(false)}
+            className={buttonStyles.outline}
+          >
+            Send another message
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <form className="w-full space-y-2" onSubmit={onSubmitHandler}>
-      <div className="flex w-full flex-col gap-2 md:flex-row md:gap-4">
+    <form className="w-full space-y-3" onSubmit={onSubmitHandler}>
+      <div className="flex w-full flex-col gap-3 sm:flex-row">
         <InputField
           id="name"
           name="name"
-          label="Name"
-          placeholder="e.g. Irly Fizaharis"
+          label="Your Name"
+          placeholder="e.g. John Doe"
+          required
         />
         <InputField
           id="email"
           name="email"
-          label="Email"
-          placeholder="e.g. irly.fizaharis.dev@gmail.com"
+          type="email"
+          label="Your Email"
+          placeholder="e.g. john@example.com"
+          required
         />
       </div>
-      <TextArea label="Message" name="message" id="message" />
-      <div className="flex w-full justify-end">
+      <TextArea
+        label="Project Details / Message"
+        name="message"
+        id="message"
+        placeholder="Tell me about what you want to build, timeline, or any questions..."
+        required
+      />
+      <div className="flex w-full justify-end pt-1">
         <button
-          disabled={pending}
-          className="bg-app-400 flex cursor-pointer items-center gap-2 rounded-md py-2.5 pr-5 pl-4 text-zinc-50 disabled:opacity-80"
           type="submit"
+          disabled={pending}
+          className={`${buttonStyles.primary} min-w-28`}
         >
           {pending ? (
             <>
-              <div className="flex items-center">
-                <svg
-                  role="status"
-                  aria-live="polite"
-                  aria-hidden="true"
-                  className="text-app-500 inline size-4 animate-spin fill-white"
-                  viewBox="0 0 100 101"
-                >
-                  <path
-                    d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-                    fill="currentColor"
-                  />
-                  <path
-                    d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-                    fill="currentFill"
-                  />
-                </svg>
-              </div>
-              <span className="text-sm font-medium">Sending...</span>
+              <svg
+                role="status"
+                aria-live="polite"
+                aria-hidden="true"
+                className="text-ink inline size-4 animate-spin"
+                viewBox="0 0 100 101"
+                fill="none"
+              >
+                <circle
+                  cx="50"
+                  cy="50"
+                  r="45"
+                  stroke="currentColor"
+                  strokeWidth="10"
+                  strokeOpacity="0.25"
+                />
+                <path
+                  d="M50 5A45 45 0 0 1 95 50"
+                  stroke="currentColor"
+                  strokeWidth="10"
+                  strokeLinecap="round"
+                />
+              </svg>
+              <span>Sending...</span>
             </>
           ) : (
             <>
-              <PaperPlaneTiltIcon />
-              <span className="text-sm font-medium">Send</span>
+              <PaperPlaneTiltIcon className="size-4" weight="bold" />
+              <span>Send Message</span>
             </>
           )}
         </button>

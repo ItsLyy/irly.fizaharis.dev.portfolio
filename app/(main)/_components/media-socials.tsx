@@ -35,13 +35,13 @@ const SocialBadge = ({
     <a
       href={link}
       target="_blank"
-      rel="noreferrer"
+      rel="noreferrer noopener"
       aria-label={name}
-      className="border-app-100 group from-app-100/10 to-app-100/20 text-app-100 flex size-11 items-center justify-center rounded-xs border bg-radial"
+      className="border-border bg-surface/70 text-muted hover:border-accent hover:text-accent group flex size-10 items-center justify-center rounded-sm border transition-all duration-200 hover:-translate-y-0.5"
     >
       <Icon
         weight="duotone"
-        className="size-6 transition-discrete duration-300 ease-in-out group-hover:scale-110"
+        className="size-5 transition-transform duration-200 group-hover:scale-110"
       />
     </a>
   );

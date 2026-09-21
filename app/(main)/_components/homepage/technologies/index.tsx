@@ -1,49 +1,48 @@
 /**
- * Node Modules
- */
-import {
-  IconBrandFigma,
-  IconBrandNextjs,
-  IconBrandReact,
-  IconBrandSupabase,
-  IconBrandTailwind,
-} from "@tabler/icons-react";
-
-/**
  * Custom Modules
  */
 import Section from "../section";
 import Card from "./card";
 
-const technologies = [
+const capabilityGroups = [
   {
-    name: "Next.js",
-    icon: IconBrandNextjs,
+    category: "01 — Web Interfaces",
+    skills: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Tailwind CSS 4",
+      "Responsive UI",
+    ],
   },
   {
-    name: "React",
-    icon: IconBrandReact,
+    category: "02 — Backend & Data",
+    skills: ["Node.js", "Supabase", "PostgreSQL", "Drizzle ORM", "REST APIs"],
   },
   {
-    name: "Tailwindcss",
-    icon: IconBrandTailwind,
-  },
-  {
-    name: "Supabase",
-    icon: IconBrandSupabase,
-  },
-  {
-    name: "Figma",
-    icon: IconBrandFigma,
+    category: "03 — Workflow & Tools",
+    skills: ["Git / GitHub", "Figma", "Web Performance", "Zod"],
   },
 ];
 
 const Technologies = () => {
   return (
-    <Section title="TECHNOLOGIEs">
-      <div className="flex w-full flex-wrap gap-2 py-2">
-        {technologies.map((technology, index) => (
-          <Card key={index} name={technology.name} icon={technology.icon} />
+    <Section title="CAPABILITIES & TECH" badge="[STACK]">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+        {capabilityGroups.map((group) => (
+          <div
+            key={group.category}
+            className="border-border bg-surface/50 space-y-2 rounded-sm border p-3"
+          >
+            <h3 className="text-accent/90 font-mono text-xs font-semibold tracking-wider uppercase">
+              {group.category}
+            </h3>
+            <div className="flex flex-wrap gap-1.5">
+              {group.skills.map((skill) => (
+                <Card key={skill} name={skill} />
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     </Section>

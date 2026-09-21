@@ -3,23 +3,41 @@
  */
 import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+  javascript,
+  jsx,
+  tsx,
+  typescript,
+  json,
+  bash,
+} from "react-syntax-highlighter/dist/esm/languages/prism";
+
+SyntaxHighlighter.registerLanguage("javascript", javascript);
+SyntaxHighlighter.registerLanguage("js", javascript);
+SyntaxHighlighter.registerLanguage("jsx", jsx);
+SyntaxHighlighter.registerLanguage("typescript", typescript);
+SyntaxHighlighter.registerLanguage("ts", typescript);
+SyntaxHighlighter.registerLanguage("tsx", tsx);
+SyntaxHighlighter.registerLanguage("json", json);
+SyntaxHighlighter.registerLanguage("bash", bash);
+SyntaxHighlighter.registerLanguage("sh", bash);
 
 const markdownClasses = {
   wrapper:
-    "markdown-content text-app-100 max-w-none [&_a]:text-app-400 [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:opacity-90",
-  h1: "text-2xl font-semibold text-app-100 border-b border-app-300 pb-2",
-  h2: "text-xl font-semibold text-app-100 mt-4 mb-2 border-b border-app-300/80 pb-1.5",
-  h3: "text-lg font-medium text-app-100 mb-1 mt-4",
-  p: "text-app-200 my-2",
-  ul: "list-disc list-inside text-app-200",
-  ol: "list-decimal list-inside text-app-200",
+    "markdown-content text-foreground max-w-none [&_a]:text-accent [&_a]:underline [&_a]:underline-offset-2 [&_a:hover]:opacity-90",
+  h1: "text-2xl font-semibold text-foreground border-b border-border pb-2",
+  h2: "text-xl font-semibold text-foreground mt-4 mb-2 border-b border-border/80 pb-1.5",
+  h3: "text-lg font-medium text-foreground mb-1 mt-4",
+  p: "text-muted my-2",
+  ul: "list-disc list-inside text-muted",
+  ol: "list-decimal list-inside text-muted",
   li: "leading-relaxed",
-  blockquote: "border-l-4 border-app-400 pl-4 italic text-app-250 my-4",
-  code: "rounded bg-app-500 px-1.5 py-0.5 text-sm font-mono text-app-100",
+  blockquote: "border-l-4 border-accent pl-4 italic text-faint my-4",
+  code: "rounded bg-background px-1.5 py-0.5 text-sm font-mono text-foreground",
   pre: "!my-2 overflow-x-auto rounded-lg",
-  hr: "my-3! text-app-250",
+  hr: "my-3! text-faint",
 };
 
 export default function MarkdownRenderer({ content }: { content: string }) {
@@ -54,26 +72,22 @@ export default function MarkdownRenderer({ content }: { content: string }) {
             </blockquote>
           ),
           code(props) {
-            const {
-              children,
-              className,
-              node,
-              ref: _ref,
-              key: _key,
-              ...rest
-            } = props;
+            const { children, className, node, ref, ...rest } = props;
+            void node;
+            void ref;
             const match = /language-(\w+)/.exec(className || "");
             return match ? (
               <SyntaxHighlighter
                 {...rest}
                 PreTag="div"
-                children={String(children).replace(/\n$/, "")}
                 language={match[1]}
                 style={oneDark}
                 customStyle={{ margin: 0 }}
                 className={markdownClasses.pre}
                 codeTagProps={{ className: "text-sm" }}
-              />
+              >
+                {String(children).replace(/\n$/, "")}
+              </SyntaxHighlighter>
             ) : (
               <code
                 {...rest}

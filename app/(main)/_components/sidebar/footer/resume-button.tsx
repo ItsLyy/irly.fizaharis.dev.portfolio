@@ -3,17 +3,22 @@
  */
 import { ReadCvLogoIcon } from "@phosphor-icons/react/dist/ssr";
 
+/**
+ * Custom Modules
+ */
+import { buttonStyles } from "@/app/_components/ui/button";
+
 const ResumeButton = () => {
   return (
     <a
       href="/documents/resume.pdf"
       target="_blank"
-      rel="noreferrer"
+      rel="noreferrer noopener"
       aria-label="Open resume (PDF)"
-      className="bg-app-100 text-app-500 flex w-full cursor-pointer items-center justify-center gap-2 rounded-sm px-2 py-2 font-medium md:pr-3"
+      className={`${buttonStyles.primary} w-full justify-center font-mono text-xs tracking-wider uppercase`}
     >
       <ReadCvLogoIcon className="size-4" weight="duotone" />
-      <span className="hidden md:inline">Resume</span>
+      <span>Resume</span>
     </a>
   );
 };

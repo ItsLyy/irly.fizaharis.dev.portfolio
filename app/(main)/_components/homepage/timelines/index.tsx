@@ -18,21 +18,21 @@ interface IContentProps {
   responsibilities?: string[];
 }
 
-const Timelines = ({ title, datas }: ITimelinesProps) => {
+interface ITimelinesProps {
+  title: string;
+  badge?: string;
+  datas: IContentProps[];
+}
+
+const Timelines = ({ title, badge, datas }: ITimelinesProps) => {
   return (
-    <Section title={title}>
-      <ul className="ml-8 flex flex-col">
+    <Section title={title} badge={badge}>
+      <ul className="flex flex-col pt-1">
         {datas.map((data, index) => (
           <Content
-            key={index}
+            key={data.name + index}
             {...data}
-            className={
-              index === 0
-                ? "pt-6"
-                : index === datas.length - 1
-                  ? "border-l-0 pb-4!"
-                  : ""
-            }
+            isLast={index === datas.length - 1}
           />
         ))}
       </ul>

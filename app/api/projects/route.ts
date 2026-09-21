@@ -3,7 +3,6 @@
  */
 import { writeFile, mkdir } from "node:fs/promises";
 import path from "node:path";
-import { like, sql } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
 /**
@@ -15,41 +14,6 @@ import { projects } from "@/app/_db/schema";
 const PUBLIC_DIR = path.join(process.cwd(), "public");
 const IMAGES_PROJECTS_DIR = path.join(PUBLIC_DIR, "images", "projects");
 const DOCUMENTS_PROJECTS_DIR = path.join(PUBLIC_DIR, "documents", "projects");
-
-export async function GET(req: NextRequest) {
-  try {
-    const { searchParams } = req.nextUrl;
-    const query = searchParams.get("q") || "";
-    const limit = parseInt(searchParams.get("limit") || "0");
-
-    let data = db
-      .select({
-        id: projects.id,
-        name: projects.name,
-        slug: projects.slug,
-        imagePath: projects.imagePath,
-        stacks: projects.stacks,
-      })
-      .from(projects)
-      .where(like(projects.name, `%${query}%`))
-      .$dynamic();
-
-    if (limit > 0) data = data.limit(limit);
-
-    return NextResponse.json({
-      message: "Projects successfully retrieve.",
-      projects: await data,
-    });
-  } catch (error) {
-    return NextResponse.json(
-      {
-        message: "Something went wrong!",
-        error,
-      },
-      { status: 500 },
-    );
-  }
-}
 
 export async function POST(req: NextRequest) {
   try {

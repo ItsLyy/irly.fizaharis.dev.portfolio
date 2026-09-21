@@ -1,17 +1,13 @@
 /**
  * Custom Modules
  */
-import StackBadge from "@/app/_components/ui/stack-badge";
+import Badge from "@/app/_components/ui/badge";
 
 const StacksGroup = ({ stacks }: { stacks: string[] }) => {
   return (
     <div className="flex flex-wrap gap-1">
       {stacks.map((stack, index) => (
-        <StackBadge
-          key={index}
-          name={stack}
-          className="h-fit rounded-sm! px-2! text-sm! leading-tight!"
-        />
+        <Badge key={index} name={stack} className="px-2.5 py-1 text-xs" />
       ))}
     </div>
   );

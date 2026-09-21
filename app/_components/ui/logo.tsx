@@ -4,16 +4,16 @@
 import { MoonIcon } from "@phosphor-icons/react/dist/ssr";
 import React from "react";
 
-const Logo = ({ className = "" }) => {
+const Logo = ({ className = "size-11" }: { className?: string }) => {
   return (
     <div
-      className={`text-app-400 bg-app-400/20 relative size-13 rounded-3xl p-3.5 ${className}`}
+      className={`border-accent/30 bg-accent/15 text-accent relative inline-flex shrink-0 items-center justify-center rounded-xl border p-2.5 ${className}`}
     >
-      <div className="border-app-400 shadow-app-400/20 absolute top-0 left-0 -m-1 size-5 scale-60 rounded-md border-t border-l shadow-[-3px_-3px_5px_0.2px]" />
-      <div className="border-app-400 shadow-app-400/20 absolute right-0 bottom-0 -m-1 size-5 scale-60 rounded-md border-r border-b shadow-[3px_3px_5px_0.2px]" />
-      <div className="border-app-400 shadow-app-400/20 absolute bottom-0 left-0 -m-1 size-5 scale-60 rounded-md border-b border-l shadow-[-3px_3px_5px_0.2px]" />
-      <div className="border-app-400 shadow-app-400/20 absolute top-0 right-0 -m-1 size-5 scale-60 rounded-md border-t border-r shadow-[3px_-3px_5px_0.2px]" />
-      <MoonIcon className="size-full" />
+      <span className="border-accent absolute -top-1 -left-1 size-2 border-t border-l" />
+      <span className="border-accent absolute -top-1 -right-1 size-2 border-t border-r" />
+      <span className="border-accent absolute -bottom-1 -left-1 size-2 border-b border-l" />
+      <span className="border-accent absolute -right-1 -bottom-1 size-2 border-r border-b" />
+      <MoonIcon className="size-full" weight="duotone" />
     </div>
   );
 };
