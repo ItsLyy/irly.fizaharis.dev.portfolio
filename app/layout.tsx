@@ -7,7 +7,7 @@ import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
  * Custom Modules
  */
 import ToasterProvider from "./_components/general/toaster-provider";
-import SplashScreen from "./_components/general/splash-screen";
+import WelcomeIntro from "./_components/general/welcome-intro";
 import { defaultMetadata, siteConfig } from "./_lib/metadata";
 
 /**
@@ -132,7 +132,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
-        <SplashScreen />
+        <WelcomeIntro />
         {children}
         <ToasterProvider fontClassName={spaceGrotesk.className} />
       </body>
