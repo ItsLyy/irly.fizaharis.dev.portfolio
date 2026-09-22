@@ -56,18 +56,51 @@ const Form = () => {
         return toast.error("Failed!", { description: firstError });
       }
 
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY || "",
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_KEY || "",
-        {
-          from_name: validatedData.data.name,
-          from_email: validatedData.data.email,
-          message: validatedData.data.message,
-        },
-        {
-          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "",
-        },
+      // 1. EmailJS delivery (if configured)
+      const hasEmailJs = Boolean(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY &&
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_KEY &&
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
       );
+
+      const emailPromise = hasEmailJs
+        ? emailjs.send(
+            process.env.NEXT_PUBLIC_EMAILJS_SERVICE_KEY!,
+            process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_KEY!,
+            {
+              from_name: validatedData.data.name,
+              from_email: validatedData.data.email,
+              message: validatedData.data.message,
+            },
+            {
+              publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
+            },
+          )
+        : Promise.resolve(null);
+
+      // 2. WhatsApp bot notification delivery via server API
+      const contactApiPromise = fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(validatedData.data),
+      });
+
+      const [emailResult, apiResult] = await Promise.allSettled([
+        emailPromise,
+        contactApiPromise,
+      ]);
+
+      const emailFailed = emailResult.status === "rejected";
+      const apiFailed =
+        apiResult.status === "rejected" ||
+        (apiResult.status === "fulfilled" && !apiResult.value.ok);
+
+      // If both channels failed completely
+      if (emailFailed && apiFailed) {
+        throw new Error("Unable to deliver message through any channel");
+      }
 
       formElement.reset();
       setSubmitted(true);

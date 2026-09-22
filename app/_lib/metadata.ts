@@ -23,6 +23,7 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/irly-fizaharis-aa8896298/",
     instagram: "https://www.instagram.com/irlydev/",
     twitter: "https://twitter.com/irlydev",
+    whatsapp: "https://wa.me/6283180138268",
   },
 };
 
