@@ -103,6 +103,7 @@ const jsonLd = {
         siteConfig.socials.linkedin,
         siteConfig.socials.instagram,
         siteConfig.socials.twitter,
+        siteConfig.socials.whatsapp,
       ],
     },
   ],

@@ -143,18 +143,21 @@ export default function ChatboxWidget() {
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen((prev) => !prev)}
           aria-label={isOpen ? "Close AI Chatbox" : "Open AI Chatbox"}
-          className="group relative flex cursor-pointer items-center gap-2 rounded-full border border-accent/40 bg-surface/90 px-3.5 py-2.5 text-xs font-mono text-foreground shadow-xl backdrop-blur-md transition-all hover:border-accent hover:bg-raised"
+          className="group border-accent/40 bg-surface/90 text-foreground hover:border-accent hover:bg-raised relative flex cursor-pointer items-center gap-2 rounded-full border px-3.5 py-2.5 font-mono text-xs shadow-xl backdrop-blur-md transition-all"
         >
           {/* Pulsing indicator */}
           <span className="relative flex size-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-            <span className="relative inline-flex size-2 rounded-full bg-accent" />
+            <span className="bg-accent absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" />
+            <span className="bg-accent relative inline-flex size-2 rounded-full" />
           </span>
 
-          <SparkleIcon weight="fill" className="size-4 text-accent transition-transform group-hover:rotate-12" />
-          <span className="font-medium text-foreground">Ask AI</span>
+          <SparkleIcon
+            weight="fill"
+            className="text-accent size-4 transition-transform group-hover:rotate-12"
+          />
+          <span className="text-foreground font-medium">Ask AI</span>
 
-          <span className="hidden rounded-xs border border-border/70 bg-sunken px-1.5 py-0.5 text-[10px] text-faint sm:inline">
+          <span className="border-border/70 bg-sunken text-faint hidden rounded-xs border px-1.5 py-0.5 text-[10px] sm:inline">
             ⌘K
           </span>
         </motion.button>
@@ -170,28 +173,32 @@ export default function ChatboxWidget() {
             transition={{ duration: 0.25, ease: "easeOut" }}
             role="dialog"
             aria-label="Irly AI Assistant Chatbox"
-            className="fixed right-3 bottom-18 z-50 flex h-[560px] max-h-[82vh] w-[94vw] max-w-[420px] flex-col overflow-hidden rounded-md border border-border bg-surface shadow-2xl backdrop-blur-xl sm:right-6"
+            className="border-border bg-surface fixed right-3 bottom-18 z-50 flex h-[560px] max-h-[82vh] w-[94vw] max-w-[420px] flex-col overflow-hidden rounded-md border shadow-2xl backdrop-blur-xl sm:right-6"
           >
             {/* Structural design corner brackets */}
-            <span className="pointer-events-none absolute -top-1 -left-1 size-3 border-t-2 border-l-2 border-accent" />
-            <span className="pointer-events-none absolute -top-1 -right-1 size-3 border-t-2 border-r-2 border-accent" />
-            <span className="pointer-events-none absolute -bottom-1 -left-1 size-3 border-b-2 border-l-2 border-accent" />
-            <span className="pointer-events-none absolute -bottom-1 -right-1 size-3 border-b-2 border-r-2 border-accent" />
+            <span className="border-accent pointer-events-none absolute -top-1 -left-1 size-3 border-t-2 border-l-2" />
+            <span className="border-accent pointer-events-none absolute -top-1 -right-1 size-3 border-t-2 border-r-2" />
+            <span className="border-accent pointer-events-none absolute -bottom-1 -left-1 size-3 border-b-2 border-l-2" />
+            <span className="border-accent pointer-events-none absolute -right-1 -bottom-1 size-3 border-r-2 border-b-2" />
 
             {/* Chat Header */}
-            <div className="flex items-center justify-between border-b border-border/80 bg-background/90 px-4 py-3">
+            <div className="border-border/80 bg-background/90 flex items-center justify-between border-b px-4 py-3">
               <div className="flex items-center gap-2.5">
-                <div className="flex size-7 items-center justify-center rounded-sm border border-accent/40 bg-accent/15 text-accent">
+                <div className="border-accent/40 bg-accent/15 text-accent flex size-7 items-center justify-center rounded-sm border">
                   <RobotIcon className="size-4" weight="duotone" />
                 </div>
                 <div>
                   <div className="flex items-center gap-1.5">
-                    <span className="text-xs font-semibold text-foreground">Irly AI Assistant</span>
-                    <span className="rounded-xs bg-accent/20 px-1 py-0.2 font-mono text-[9px] font-semibold text-accent uppercase">
+                    <span className="text-foreground text-xs font-semibold">
+                      Irly AI Assistant
+                    </span>
+                    <span className="bg-accent/20 py-0.2 text-accent rounded-xs px-1 font-mono text-[9px] font-semibold uppercase">
                       Full-Stack
                     </span>
                   </div>
-                  <p className="font-mono text-[10px] text-faint">Centralized Portfolio Memory</p>
+                  <p className="text-faint font-mono text-[10px]">
+                    Centralized Portfolio Memory
+                  </p>
                 </div>
               </div>
 
@@ -201,7 +208,7 @@ export default function ChatboxWidget() {
                   onClick={handleClear}
                   title="Reset conversation"
                   aria-label="Reset conversation"
-                  className="cursor-pointer rounded-sm p-1.5 text-muted transition-colors hover:bg-surface hover:text-foreground"
+                  className="text-muted hover:bg-surface hover:text-foreground cursor-pointer rounded-sm p-1.5 transition-colors"
                 >
                   <ArrowCounterClockwiseIcon className="size-3.5" />
                 </button>
@@ -210,7 +217,7 @@ export default function ChatboxWidget() {
                   onClick={() => setIsOpen(false)}
                   title="Close chat"
                   aria-label="Close chat"
-                  className="cursor-pointer rounded-sm p-1.5 text-muted transition-colors hover:bg-surface hover:text-foreground"
+                  className="text-muted hover:bg-surface hover:text-foreground cursor-pointer rounded-sm p-1.5 transition-colors"
                 >
                   <XIcon className="size-3.5" />
                 </button>
@@ -228,15 +235,18 @@ export default function ChatboxWidget() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="flex items-center gap-2 text-muted"
+                  className="text-muted flex items-center gap-2"
                 >
-                  <div className="flex size-7 shrink-0 items-center justify-center rounded-sm border border-border bg-sunken text-accent">
-                    <SparkleIcon className="size-3.5 animate-spin text-accent" weight="fill" />
+                  <div className="border-border bg-sunken text-accent flex size-7 shrink-0 items-center justify-center rounded-sm border">
+                    <SparkleIcon
+                      className="text-accent size-3.5 animate-spin"
+                      weight="fill"
+                    />
                   </div>
-                  <div className="flex items-center gap-1 rounded-md border border-border/80 bg-surface px-3 py-2">
-                    <span className="size-1.5 animate-bounce rounded-full bg-accent [animation-delay:-0.3s]" />
-                    <span className="size-1.5 animate-bounce rounded-full bg-accent [animation-delay:-0.15s]" />
-                    <span className="size-1.5 animate-bounce rounded-full bg-accent" />
+                  <div className="border-border/80 bg-surface flex items-center gap-1 rounded-md border px-3 py-2">
+                    <span className="bg-accent size-1.5 animate-bounce rounded-full [animation-delay:-0.3s]" />
+                    <span className="bg-accent size-1.5 animate-bounce rounded-full [animation-delay:-0.15s]" />
+                    <span className="bg-accent size-1.5 animate-bounce rounded-full" />
                   </div>
                 </motion.div>
               )}
@@ -246,15 +256,17 @@ export default function ChatboxWidget() {
 
             {/* Quick Suggestions Chips */}
             {messages.length <= 2 && !isLoading && (
-              <div className="border-t border-border/50 bg-sunken/40 px-3 py-2">
-                <p className="mb-1.5 font-mono text-[10px] text-faint">SUGGESTED QUESTIONS:</p>
+              <div className="border-border/50 bg-sunken/40 border-t px-3 py-2">
+                <p className="text-faint mb-1.5 font-mono text-[10px]">
+                  SUGGESTED QUESTIONS:
+                </p>
                 <div className="flex flex-wrap gap-1.5">
                   {SUGGESTED_PROMPTS.map((prompt) => (
                     <button
                       key={prompt}
                       type="button"
                       onClick={() => handleSend(prompt)}
-                      className="cursor-pointer rounded-xs border border-border/70 bg-surface/80 px-2 py-1 text-left font-mono text-[11px] text-muted transition-all hover:border-accent hover:text-foreground active:scale-95"
+                      className="border-border/70 bg-surface/80 text-muted hover:border-accent hover:text-foreground cursor-pointer rounded-xs border px-2 py-1 text-left font-mono text-[11px] transition-all active:scale-95"
                     >
                       {prompt}
                     </button>
@@ -269,7 +281,7 @@ export default function ChatboxWidget() {
                 e.preventDefault();
                 handleSend();
               }}
-              className="border-t border-border/80 bg-background/90 p-3"
+              className="border-border/80 bg-background/90 border-t p-3"
             >
               <div className="relative flex items-center">
                 <textarea
@@ -284,18 +296,18 @@ export default function ChatboxWidget() {
                   }}
                   rows={1}
                   placeholder="Ask about skills, projects, business value..."
-                  className="w-full resize-none rounded-sm border border-border bg-surface px-3 py-2 pr-10 text-xs text-foreground placeholder:text-dim focus:border-accent focus:outline-none"
+                  className="border-border bg-surface text-foreground placeholder:text-dim focus:border-accent w-full resize-none rounded-sm border px-3 py-2 pr-10 text-xs focus:outline-none"
                 />
                 <button
                   type="submit"
                   disabled={!input.trim() || isLoading}
                   aria-label="Send Message"
-                  className="absolute right-1.5 flex size-7 cursor-pointer items-center justify-center rounded-xs bg-accent text-ink transition-all hover:bg-accent/90 disabled:pointer-events-none disabled:opacity-40"
+                  className="bg-accent text-ink hover:bg-accent/90 absolute right-1.5 flex size-7 cursor-pointer items-center justify-center rounded-xs transition-all disabled:pointer-events-none disabled:opacity-40"
                 >
                   <PaperPlaneRightIcon className="size-3.5" weight="fill" />
                 </button>
               </div>
-              <div className="mt-2 flex items-center justify-between font-mono text-[10px] text-faint">
+              <div className="text-faint mt-2 flex items-center justify-between font-mono text-[10px]">
                 <span>[ESC] TO CLOSE</span>
                 <span className="text-accent/80">CENTRALIZED MEMORY</span>
               </div>

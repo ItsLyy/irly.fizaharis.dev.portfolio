@@ -9,7 +9,11 @@ const Footer = () => {
   return (
     <div className="mr-2 flex shrink-0 flex-col gap-2 md:mr-0">
       <StatusWork isAvailable />
-      <MediaSocials className="grid-cols-1! md:grid-cols-4!" />
+      <MediaSocials
+        className="grid-cols-5! gap-1.5! lg:gap-2!"
+        badgeClassName="size-8! md:size-8! lg:size-9!"
+        iconClassName="size-4! md:size-4! lg:size-4.5!"
+      />
       <ResumeButton />
     </div>
   );

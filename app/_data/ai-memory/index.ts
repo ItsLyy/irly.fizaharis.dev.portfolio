@@ -48,6 +48,7 @@ export interface AiMemoryData {
     location: string;
     experienceYears: number;
     email: string;
+    whatsapp: string;
     github: string;
     linkedin: string;
     instagram: string;
@@ -82,10 +83,12 @@ export const aiMemory: AiMemoryData = {
     location: "Bandung, Indonesia",
     experienceYears: 3,
     email: "irly.fizaharis.dev@gmail.com",
+    whatsapp: "https://wa.me/6283180138268",
     github: "https://github.com/ItsLyy",
     linkedin: "https://www.linkedin.com/in/irly-fizaharis-aa8896298/",
     instagram: "https://www.instagram.com/irlydev/",
-    availability: "Available for full-time engineering roles, contract engagements, and high-impact digital product development.",
+    availability:
+      "Available for full-time engineering roles, contract engagements, and high-impact digital product development.",
     shortBio:
       "Full-stack software engineer who translates complex business requirements into fast, reliable, and user-centered digital products. Specializing in TypeScript, Next.js, Node.js, and PostgreSQL.",
     businessValueProposition:
@@ -98,28 +101,32 @@ export const aiMemory: AiMemoryData = {
       tagline: "Turn ideas into production-ready web applications",
       description:
         "Complete lifecycle product engineering from database design and RESTful APIs to responsive, high-performance web frontends with Next.js and TypeScript.",
-      idealFor: "Startups, scale-ups, and businesses needing a robust web application built right from day one.",
+      idealFor:
+        "Startups, scale-ups, and businesses needing a robust web application built right from day one.",
     },
     {
       title: "MVP & Rapid Product Prototyping",
       tagline: "From concept to working software with speed",
       description:
         "Building validated Minimum Viable Products (MVPs) with clean architecture, helping founders launch quickly and gather real user feedback.",
-      idealFor: "Founders and teams looking to validate a digital product idea fast without sacrificing code quality.",
+      idealFor:
+        "Founders and teams looking to validate a digital product idea fast without sacrificing code quality.",
     },
     {
       title: "Backend Engineering & API Development",
       tagline: "Resilient systems and structured data models",
       description:
         "Architecting clean relational databases with PostgreSQL/Drizzle, secure authentication, role-based access control, and robust API endpoints with Node.js and Laravel.",
-      idealFor: "Companies needing dependable backend services, third-party integrations, or database migrations.",
+      idealFor:
+        "Companies needing dependable backend services, third-party integrations, or database migrations.",
     },
     {
       title: "Frontend Performance & UX Optimization",
       tagline: "Faster loading, higher conversions, and seamless usability",
       description:
         "Optimizing Core Web Vitals, responsive layouts, accessibility (a11y), and state management to deliver instant page loads and delightful experiences across all screen sizes.",
-      idealFor: "Businesses looking to increase user retention and search engine visibility through technical excellence.",
+      idealFor:
+        "Businesses looking to increase user retention and search engine visibility through technical excellence.",
     },
   ],
 
@@ -169,7 +176,13 @@ export const aiMemory: AiMemoryData = {
         "Streamlined frontend-backend API integrations, reducing latency and operational friction.",
         "Collaborated cross-functionally from Figma wireframing to production deployment.",
       ],
-      technologies: ["Next.js", "Tailwind CSS", "Laravel", "REST APIs", "Figma"],
+      technologies: [
+        "Next.js",
+        "Tailwind CSS",
+        "Laravel",
+        "REST APIs",
+        "Figma",
+      ],
     },
     {
       company: "DBS Coding Camp 2025",
@@ -181,7 +194,13 @@ export const aiMemory: AiMemoryData = {
         "Improved frontend performance metrics and usability standards across multi-device screens.",
         "Delivered production-grade team capstone meeting rigorous business acceptance criteria.",
       ],
-      technologies: ["React", "Tailwind CSS", "REST APIs", "JavaScript", "Responsive UI"],
+      technologies: [
+        "React",
+        "Tailwind CSS",
+        "REST APIs",
+        "JavaScript",
+        "Responsive UI",
+      ],
     },
   ],
 
@@ -190,13 +209,15 @@ export const aiMemory: AiMemoryData = {
       institution: "Telkom University",
       degree: "Bachelor of Informatics (S1 Informatika)",
       period: "2025 - 2029 (Expected)",
-      focus: "Computer Science, Software Architecture, Data Structures & Algorithms",
+      focus:
+        "Computer Science, Software Architecture, Data Structures & Algorithms",
     },
     {
       institution: "SMK Negeri 1 Wonosobo",
       degree: "Vocational High School - Software Engineering (RPL)",
       period: "2022 - 2025",
-      focus: "Software Engineering fundamentals, Web Development, Database Management",
+      focus:
+        "Software Engineering fundamentals, Web Development, Database Management",
     },
   ],
 
@@ -218,7 +239,15 @@ export const aiMemory: AiMemoryData = {
         "PostgreSQL + Drizzle ORM data pipeline for dynamic project showcase",
         "Interactive timeline, skills matrices, and direct contact form",
       ],
-      techStack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "PostgreSQL", "Drizzle ORM", "Framer Motion"],
+      techStack: [
+        "Next.js 16",
+        "React 19",
+        "TypeScript",
+        "Tailwind CSS 4",
+        "PostgreSQL",
+        "Drizzle ORM",
+        "Framer Motion",
+      ],
       githubUrl: "https://github.com/ItsLyy",
       liveUrl: "https://irly.fizaharis.dev",
     },
@@ -238,7 +267,14 @@ export const aiMemory: AiMemoryData = {
         "Responsive layout optimized for mobile and desktop workflows",
         "Modular full-stack architecture with secure data persistence",
       ],
-      techStack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PostgreSQL", "Supabase"],
+      techStack: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "PostgreSQL",
+        "Supabase",
+      ],
       githubUrl: "https://github.com/ItsLyy",
     },
   ],
@@ -246,31 +282,67 @@ export const aiMemory: AiMemoryData = {
   faqs: [
     {
       question: "What is Irly's core expertise?",
-      keywords: ["expertise", "skills", "what do you do", "role", "specialty", "tech stack"],
+      keywords: [
+        "expertise",
+        "skills",
+        "what do you do",
+        "role",
+        "specialty",
+        "tech stack",
+      ],
       answer:
         "Irly Fizaharis is a Full-Stack Developer & Software Engineer based in Bandung, Indonesia. He specializes in end-to-end web product development using TypeScript, Next.js 16, React 19, Node.js, PostgreSQL, Supabase, and Drizzle ORM. His focus is bridging high-converting user interfaces with scalable, maintainable backend architectures.",
     },
     {
       question: "Why should businesses or clients hire Irly?",
-      keywords: ["why hire", "business value", "hire", "client", "value", "benefits"],
+      keywords: [
+        "why hire",
+        "business value",
+        "hire",
+        "client",
+        "value",
+        "benefits",
+      ],
       answer:
         "Businesses hire Irly because he brings a product and business mindset to engineering: \n1. **End-to-End Ownership**: Handles everything from UI/UX implementation to backend APIs and database modeling.\n2. **Fast Time-to-Market**: Builds rapidly using modern tools (Next.js, Tailwind, Drizzle) without sacrificing code quality.\n3. **Business Alignment**: Prioritizes conversion, Core Web Vitals, SEO, and maintainability to ensure technical work drives real business revenue.",
     },
     {
       question: "What kind of projects or services can Irly deliver?",
-      keywords: ["services", "offerings", "deliver", "what can you build", "mvp", "freelance"],
+      keywords: [
+        "services",
+        "offerings",
+        "deliver",
+        "what can you build",
+        "mvp",
+        "freelance",
+      ],
       answer:
         "Irly delivers:\n- **Full-Stack Web Applications** (Next.js, Node.js, PostgreSQL)\n- **Startup MVPs** (rapid concept-to-launch prototyping)\n- **Backend APIs & Database Architecture** (Supabase, Drizzle, Laravel, REST APIs)\n- **Performance & UX Optimization** (speed audits, responsiveness, accessibility)",
     },
     {
       question: "Is Irly available for hire or freelance work?",
-      keywords: ["available", "hire", "freelance", "contract", "full-time", "job", "work together"],
+      keywords: [
+        "available",
+        "hire",
+        "freelance",
+        "contract",
+        "full-time",
+        "job",
+        "work together",
+      ],
       answer:
         "Yes! Irly is currently open to full-time full-stack developer roles, contract engagements, and select freelance product development. You can reach out directly via the contact form on this site or email him at irly.fizaharis.dev@gmail.com.",
     },
     {
       question: "What projects has Irly built?",
-      keywords: ["projects", "portfolio", "finquest", "work", "showcase", "built"],
+      keywords: [
+        "projects",
+        "portfolio",
+        "finquest",
+        "work",
+        "showcase",
+        "built",
+      ],
       answer:
         "Key projects include:\n1. **Portfolio Website v1**: A modern, high-performance portfolio with dynamic projects, Drizzle ORM, and this intelligent AI assistant.\n2. **FinQuest**: A fintech and gamified personal finance tracker combining expense analytics with milestone goals.\nVisit the /projects page to explore details and code repositories!",
     },
@@ -295,7 +367,8 @@ export const aiMemory: AiMemoryData = {
  * Builds a structured system prompt for Gemini LLM using the centralized memory.
  */
 export function buildAiSystemPrompt(memory: AiMemoryData = aiMemory): string {
-  const { profile, services, skills, experiences, educations, projects, faqs } = memory;
+  const { profile, services, skills, experiences, educations, projects, faqs } =
+    memory;
 
   return `
 You are the official AI Assistant for Irly Fizaharis's developer portfolio website.
@@ -307,6 +380,7 @@ Your mission is to represent Irly accurately, professionally, and persuasively t
 - Location: ${profile.location}
 - Experience: ${profile.experienceYears}+ years
 - Email: ${profile.email}
+- WhatsApp: ${profile.whatsapp}
 - GitHub: ${profile.github}
 - LinkedIn: ${profile.linkedin}
 - Availability: ${profile.availability}
@@ -316,7 +390,8 @@ Your mission is to represent Irly accurately, professionally, and persuasively t
 ### SERVICES & BUSINESS OFFERINGS:
 ${services
   .map(
-    (s) => `- **${s.title}**: ${s.tagline}. ${s.description} (Ideal for: ${s.idealFor})`,
+    (s) =>
+      `- **${s.title}**: ${s.tagline}. ${s.description} (Ideal for: ${s.idealFor})`,
   )
   .join("\n")}
 
@@ -356,9 +431,7 @@ ${educations
   .join("\n")}
 
 ### FREQUENTLY ASKED QUESTIONS & REFERENCE ANSWERS:
-${faqs
-  .map((f) => `Q: ${f.question}\nA: ${f.answer}`)
-  .join("\n\n")}
+${faqs.map((f) => `Q: ${f.question}\nA: ${f.answer}`).join("\n\n")}
 
 ### CONVERSATION & BEHAVIOR GUIDELINES:
 1. **Tone**: Warm, confident, professional, articulate, business-savvy, and concise.
@@ -380,7 +453,11 @@ export function queryOfflineAiMemory(
   const q = userQuery.toLowerCase().trim();
 
   // 1. Direct Greetings
-  if (/^(hi|hello|hey|halo|selamat pagi|selamat siang|selamat malam|greetings)/i.test(q)) {
+  if (
+    /^(hi|hello|hey|halo|selamat pagi|selamat siang|selamat malam|greetings)/i.test(
+      q,
+    )
+  ) {
     return `Hello! 👋 I'm **Irly's AI Assistant**. 
 
 I can tell you all about Irly's full-stack engineering expertise, recent projects, business offerings, or how he can help you build your next digital product.
@@ -501,13 +578,17 @@ ${s.description}
     q.includes("email") ||
     q.includes("reach") ||
     q.includes("call") ||
-    q.includes("message")
+    q.includes("message") ||
+    q.includes("whatsapp") ||
+    q.includes("wa") ||
+    q.includes("phone")
   ) {
     return `### Let's Connect! 📬
 
 Irly is always open to discussing new engineering roles, product collaborations, or freelance projects:
 
 - ✉️ **Direct Email**: [${memory.profile.email}](mailto:${memory.profile.email})
+- 💬 **WhatsApp**: [+6283180138268](${memory.profile.whatsapp})
 - 📝 **Contact Form**: Scroll to the [Contact Section](#contact) on this page
 - 💼 **LinkedIn**: [Irly's Profile](${memory.profile.linkedin})
 - 🐙 **GitHub**: [${memory.profile.github}](${memory.profile.github})
@@ -536,9 +617,17 @@ ${e.businessImpact.map((b) => `- ${b}`).join("\n")}
   }
 
   // 9. Education
-  if (q.includes("education") || q.includes("university") || q.includes("school") || q.includes("degree")) {
+  if (
+    q.includes("education") ||
+    q.includes("university") ||
+    q.includes("school") ||
+    q.includes("degree")
+  ) {
     const eduText = memory.educations
-      .map((ed) => `- **${ed.degree}** @ ${ed.institution} (${ed.period})\n  *Focus*: ${ed.focus}`)
+      .map(
+        (ed) =>
+          `- **${ed.degree}** @ ${ed.institution} (${ed.period})\n  *Focus*: ${ed.focus}`,
+      )
       .join("\n\n");
     return `### Education & Academic Background 🎓\n\n${eduText}`;
   }
