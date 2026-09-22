@@ -232,10 +232,10 @@ export default function WelcomeIntro() {
                     Irly Fizaharis
                   </span>
                   <span className="text-border">•</span>
-                  <span className="text-accent">Front-end Developer</span>
+                  <span className="text-accent">Full-Stack Developer</span>
                 </motion.div>
                 <p className="text-faint text-[11px]">
-                  Modern software, thoughtfully built.
+                  End-to-end digital solutions, thoughtfully engineered.
                 </p>
               </div>
             </motion.div>

@@ -17,8 +17,9 @@ const Contact = () => {
             Have an idea worth building?
           </h3>
           <p className="text-muted mt-1 text-sm leading-relaxed">
-            I&apos;m currently open to full-stack and frontend opportunities,
-            freelance projects, and collaborations. My inbox is always open.
+            I&apos;m currently available for full-stack engineering roles,
+            high-impact contract work, and custom digital product development.
+            Let&apos;s discuss how we can build something valuable together.
           </p>
         </div>
         <MediaSocials className="w-fit" />

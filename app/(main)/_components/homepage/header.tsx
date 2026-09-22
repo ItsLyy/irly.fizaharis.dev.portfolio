@@ -43,7 +43,7 @@ const itemVariants: Variants = {
 };
 
 const Header = ({
-  role = "Front-end Developer",
+  role = "Full-Stack Developer",
   location = "Bandung, Indonesia",
   experience = 3,
 }: {
@@ -63,7 +63,7 @@ const Header = ({
         className="text-muted flex items-center gap-2 font-mono text-xs tracking-wider uppercase"
       >
         <span className="text-accent font-semibold">[FOCUS]</span>
-        <span>WEB INTERFACES & FRONTEND ARCHITECTURE</span>
+        <span>FULL-STACK ARCHITECTURE & DIGITAL PRODUCTS</span>
       </motion.div>
 
       <motion.div variants={itemVariants} className="space-y-2">
@@ -88,9 +88,10 @@ const Header = ({
         variants={itemVariants}
         className="text-muted max-w-xl text-base leading-relaxed"
       >
-        Modern software, thoughtfully built. Independent developer focused on
-        creating performant, accessible web applications and bridging clean
-        design with reliable engineering.
+        End-to-end digital solutions, thoughtfully engineered. Full-stack
+        developer translating business needs into high-converting user
+        interfaces, resilient backend architectures, and production-ready
+        applications.
       </motion.p>
 
       <motion.div
@@ -104,7 +105,7 @@ const Header = ({
           className={buttonStyles.primary}
         >
           <ChatCircleDotsIcon className="size-4" weight="duotone" />
-          <span>Let&apos;s talk</span>
+          <span>Let&apos;s talk business</span>
         </motion.a>
         <motion.div whileHover={{ y: -2 }} whileTap={{ y: 0 }}>
           <Link href="/projects" className={buttonStyles.outline}>
@@ -133,7 +134,7 @@ const Header = ({
         <div className="bg-border size-1 rounded-full" />
         <div className="text-faint flex items-center gap-1.5 font-mono text-xs">
           <CodeBlockIcon weight="duotone" className="text-accent size-3.5" />
-          <span>React • Next.js • TypeScript</span>
+          <span>Next.js • TypeScript • PostgreSQL • Node.js</span>
         </div>
       </motion.div>
     </motion.header>

@@ -4,9 +4,9 @@
 import type { Metadata } from "next";
 
 const siteName = "Irly Fizaharis";
-const siteTitle = "Irly Fizaharis — Front-end Developer & Software Engineer";
+const siteTitle = "Irly Fizaharis — Full-Stack Developer & Software Engineer";
 const siteDescription =
-  "Portfolio of Irly Fizaharis — front-end web developer based in Bandung, Indonesia. Specializing in high-performance web applications with React, Next.js, TypeScript, and modern frontend architecture.";
+  "Portfolio of Irly Fizaharis — full-stack developer and software engineer based in Bandung, Indonesia. Specializing in high-performance web applications, scalable backend systems, and modern digital products that deliver business results.";
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
@@ -36,18 +36,18 @@ export const defaultMetadata: Metadata = {
   applicationName: siteName,
   keywords: [
     "Irly Fizaharis",
-    "Front-end Developer",
-    "Frontend Engineer",
     "Full-Stack Developer",
-    "Web Developer Indonesia",
+    "Full-Stack Engineer",
+    "Software Engineer",
+    "Next.js Developer",
     "React Developer",
-    "Next.js Portfolio",
     "TypeScript Specialist",
-    "Tailwind CSS",
+    "Node.js Backend",
+    "PostgreSQL & Drizzle",
+    "Web Developer Indonesia",
     "Bandung Web Developer",
-    "Software Engineer Portfolio",
-    "Modern Web Applications",
-    "Clean UI Design",
+    "Digital Product Engineer",
+    "SaaS Application Developer",
   ],
   authors: [{ name: siteName, url: siteUrl }],
   creator: siteName,
@@ -74,7 +74,7 @@ export const defaultMetadata: Metadata = {
         url: siteConfig.image,
         width: 839,
         height: 839,
-        alt: `${siteName} — Front-end Developer`,
+        alt: `${siteName} — Full-Stack Developer`,
       },
     ],
   },

@@ -6,22 +6,37 @@ import Card from "./card";
 
 const capabilityGroups = [
   {
-    category: "01 — Web Interfaces",
+    category: "01 — Frontend & Product UX",
     skills: [
       "Next.js 16",
       "React 19",
       "TypeScript",
       "Tailwind CSS 4",
       "Responsive UI",
+      "Core Web Vitals",
     ],
   },
   {
-    category: "02 — Backend & Data",
-    skills: ["Node.js", "Supabase", "PostgreSQL", "Drizzle ORM", "REST APIs"],
+    category: "02 — Backend, Data & APIs",
+    skills: [
+      "Node.js",
+      "PostgreSQL",
+      "Supabase",
+      "Drizzle ORM",
+      "RESTful APIs",
+      "Database Modeling",
+    ],
   },
   {
-    category: "03 — Workflow & Tools",
-    skills: ["Git / GitHub", "Figma", "Web Performance", "Zod"],
+    category: "03 — Architecture & Delivery",
+    skills: [
+      "System Architecture",
+      "Full-Stack Delivery",
+      "Web Performance",
+      "Zod & Type Safety",
+      "Git / CI/CD",
+      "Figma to Code",
+    ],
   },
 ];
 

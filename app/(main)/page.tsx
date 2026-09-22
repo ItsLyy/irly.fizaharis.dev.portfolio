@@ -22,10 +22,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Irly Fizaharis — Front-end Developer & Software Engineer",
+    absolute: "Irly Fizaharis — Full-Stack Developer & Software Engineer",
   },
   description:
-    "Portfolio of Irly Fizaharis — front-end web developer based in Bandung, Indonesia. Projects, skills, education, and experience.",
+    "Portfolio of Irly Fizaharis — full-stack developer and software engineer based in Bandung, Indonesia. Delivering scalable web applications, robust APIs, and measurable business value.",
   alternates: {
     canonical: "/",
   },
@@ -38,7 +38,7 @@ export default async function Home() {
   return (
     <div className="space-y-10">
       <Header
-        role="Front-end Developer"
+        role="Full-Stack Developer"
         location="Bandung, Indonesia"
         experience={new Date().getFullYear() - 2022}
       />
@@ -47,18 +47,20 @@ export default async function Home() {
         <section aria-label="About" className="space-y-3">
           <div className="border-border/60 flex items-center gap-2 border-b pb-2 font-mono text-xs font-semibold tracking-wider uppercase">
             <span className="text-accent">[ABOUT]</span>
-            <h2 className="text-faint">BACKGROUND & APPROACH</h2>
+            <h2 className="text-faint">BACKGROUND & VALUE PROPOSITION</h2>
           </div>
           <div className="text-muted space-y-2 text-sm leading-relaxed md:text-base">
             <p>
-              I specialize in building responsive, accessible web interfaces and
-              frontend architecture with React and Next.js. My focus is on
-              turning ideas into clean, maintainable software with high
-              performance and solid UX.
+              I engineer end-to-end web applications that bridge high-impact
+              user experiences with resilient, scalable backend systems.
+              Specializing in the modern TypeScript ecosystem (Next.js, Node.js,
+              PostgreSQL, Supabase), I help businesses turn product visions and
+              complex operational workflows into dependable, high-converting
+              digital software.
             </p>
             <p className="text-faint font-mono text-xs md:text-sm">
-              &gt; Committed to structure over decoration, fast execution, and
-              reliable delivery.
+              &gt; Solving real business problems through clean architecture,
+              optimal performance, and reliable delivery.
             </p>
           </div>
         </section>

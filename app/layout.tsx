@@ -8,6 +8,7 @@ import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
  */
 import ToasterProvider from "./_components/general/toaster-provider";
 import WelcomeIntro from "./_components/general/welcome-intro";
+import ChatboxWidget from "./_components/general/chatbox";
 import { defaultMetadata, siteConfig } from "./_lib/metadata";
 
 /**
@@ -77,7 +78,7 @@ const jsonLd = {
       name: siteConfig.name,
       url: siteConfig.url.origin,
       image: siteConfig.image,
-      jobTitle: "Front-end Developer & Software Engineer",
+      jobTitle: "Full-Stack Developer & Software Engineer",
       description: defaultMetadata.description,
       address: {
         "@type": "PostalAddress",
@@ -134,6 +135,7 @@ export default function RootLayout({
         </a>
         <WelcomeIntro />
         {children}
+        <ChatboxWidget />
         <ToasterProvider fontClassName={spaceGrotesk.className} />
       </body>
     </html>
