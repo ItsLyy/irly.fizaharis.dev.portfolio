@@ -26,8 +26,8 @@ export async function GET() {
     suggestedQuestions: aiMemory.suggestedQuestions,
     hasApiKey: Boolean(
       process.env.GEMINI_API_KEY ||
-        process.env.GOOGLE_GENERATIVE_AI_API_KEY ||
-        process.env.GOOGLE_API_KEY,
+      process.env.GOOGLE_GENERATIVE_AI_API_KEY ||
+      process.env.GOOGLE_API_KEY,
     ),
   });
 }
@@ -69,7 +69,7 @@ export async function POST(req: Request) {
         ];
 
         const response = await ai.models.generateContent({
-          model: "gemini-2.5-flash",
+          model: "gemini-3.6-flash",
           contents,
           config: {
             systemInstruction,
