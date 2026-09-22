@@ -21,7 +21,7 @@ A modern, responsive portfolio website built with Next.js, React, and Tailwind C
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - pnpm (recommended) or npm/yarn
 
 ## 📜 Available Scripts

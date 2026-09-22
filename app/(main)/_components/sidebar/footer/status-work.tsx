@@ -1,11 +1,22 @@
-const StatusWork = ({ isAvailable }: { isAvailable?: boolean }) => {
+const StatusWork = ({ isAvailable = true }: { isAvailable?: boolean }) => {
   return (
     <div
-      className={`bg-app-400/20 border-app-400 hidden w-full items-center gap-4 rounded-sm border px-4 py-3 md:flex ${!isAvailable && "opacity-60"}`}
+      className={`border-border bg-surface/80 hidden w-full items-center gap-2.5 rounded-sm border px-3 py-2 md:flex ${
+        !isAvailable ? "opacity-60" : ""
+      }`}
     >
-      <div className="bg-app-400 shadow-app-400 size-fit animate-pulse rounded-full p-1 shadow-[0_0_10px_0.5px]" />
-      <span className="text-app-400 text-sm">
-        {isAvailable ? "Available for Work" : "Not Available"}
+      <span className="relative flex size-2">
+        {isAvailable && (
+          <span className="bg-accent absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" />
+        )}
+        <span
+          className={`relative inline-flex size-2 rounded-full ${
+            isAvailable ? "bg-accent" : "bg-dim"
+          }`}
+        />
+      </span>
+      <span className="text-muted font-mono text-xs tracking-wider uppercase">
+        {isAvailable ? "Available for Work" : "Currently Engaged"}
       </span>
     </div>
   );

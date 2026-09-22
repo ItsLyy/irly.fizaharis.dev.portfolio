@@ -1,20 +1,16 @@
-/**
- * Types
- */
-import type { Icon } from "@tabler/icons-react";
+"use client";
 
-interface ICardProps {
-  name: string;
-  icon: Icon;
-}
+import { motion } from "framer-motion";
 
-const Card = ({ name, icon }: ICardProps) => {
-  const Icon = icon;
+const Card = ({ name }: { name: string }) => {
   return (
-    <div className="border-app-200 group to-app-150/10 from-app-150/5 flex size-fit cursor-alias items-center justify-center gap-1.5 rounded-sm border bg-radial py-1 pr-3 pl-2 *:transition-all *:duration-300 *:ease-in-out *:group-hover:scale-105">
-      <Icon className="size-7" stroke={1} />
-      <span className="">{name}</span>
-    </div>
+    <motion.span
+      whileHover={{ y: -2, scale: 1.02 }}
+      transition={{ type: "spring", stiffness: 450, damping: 25 }}
+      className="border-border bg-raised/40 text-muted hover:border-accent/60 hover:text-foreground inline-flex cursor-default items-center justify-center rounded-xs border px-2.5 py-1 font-mono text-xs transition-colors duration-200"
+    >
+      {name}
+    </motion.span>
   );
 };
 
