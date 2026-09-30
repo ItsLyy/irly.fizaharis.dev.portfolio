@@ -223,59 +223,63 @@ export const aiMemory: AiMemoryData = {
 
   projects: [
     {
-      name: "Portfolio Website v1",
-      slug: "portfolio",
-      category: "Full-Stack Web Platform",
+      name: "Integrity Dental Care",
+      slug: "integrity-dental-care",
+      category: "Healthcare Marketing & Booking Platform",
       summary:
-        "Modern developer portfolio built with Next.js 16, React 19, Tailwind CSS 4, and Drizzle ORM.",
+        "A responsive marketing and booking website for a dental practice in Bandung, Indonesia, designed to replace patient anxiety with transparency through evidence-first, conservative dentistry.",
       businessProblem:
-        "Presenting a professional, high-performance digital identity that clearly communicates business value, technical versatility, and full-stack capabilities to prospective clients and employers.",
+        "Indonesian patients face real trust barriers in private dental care: quota-driven overtreatment, unexpected fees, rushed chair time, and contact details that contradict themselves across channels. Anxiety, not price, is the primary barrier to booking.",
       businessSolution:
-        "Engineered a lightning-fast web application featuring server-side rendering, dynamic project indexing, Catppuccin-themed minimalist UI, and an intelligent AI assistant powered by centralized memory.",
+        "Replaced anxiety with transparency through a Tell-Show-Do standard where radiographs are reviewed on screen before any instrument is introduced, unhurried 60-minute slots with salaried quota-free practitioners, and one harmonized schedule with role-differentiated WhatsApp routing.",
       keyFeatures: [
-        "Next.js 16 App Router architecture with SSR & ISR caching",
-        "Responsive, accessible UI styled with Tailwind CSS 4",
-        "Integrated AI Chatbox with centralized knowledge memory",
-        "PostgreSQL + Drizzle ORM data pipeline for dynamic project showcase",
-        "Interactive timeline, skills matrices, and direct contact form",
+        "Non-diagnostic rule-based clinic assistant that escalates to a human dentist instead of guessing, with structured WhatsApp triage summaries",
+        "Booking flow built as a Next.js parallel-route intercept, working as both a modal and a standalone page from one form",
+        "Nine routes with per-page JSON-LD schema (Dentist, MedicalBusiness, AggregateRating, FAQPage) plus six long-form Indonesian articles",
+        "Tell-Show-Do evidence-first design with written cost breakdowns and conservative treatment plans",
+        "Vitest unit tests and Playwright E2E across Desktop Chrome and Pixel 7",
+        "Seven security headers, AVIF/WebP negotiation, and WCAG 2.1 AA accessibility targets",
       ],
       techStack: [
         "Next.js 16",
         "React 19",
         "TypeScript",
         "Tailwind CSS 4",
-        "PostgreSQL",
-        "Drizzle ORM",
-        "Framer Motion",
+        "Zustand",
+        "Zod",
+        "Playwright",
+        "Vitest",
       ],
-      githubUrl: "https://github.com/ItsLyy",
-      liveUrl: "https://irly.fizaharis.dev",
+      liveUrl: "https://dental-care-one-eosin.vercel.app/",
     },
     {
-      name: "FinQuest — Financial Intelligence & Gamification",
-      slug: "finquest",
-      category: "Fintech & Interactive Application",
+      name: "Res.Book — Restaurant Booking & Owner CRM",
+      slug: "res-book",
+      category: "Full-Stack Marketplace & SaaS CRM",
       summary:
-        "An engaging financial management application designed to help users track budgets, build saving habits, and master personal finance through gamified goals.",
+        "A full-stack restaurant table-booking platform paired with a complete owner CRM. Diners browse and reserve tables while owners manage restaurants, staff, tables, photos, bookings, payments, and reviews.",
       businessProblem:
-        "Traditional personal finance tools are tedious and suffer from low user retention because data entry feels like a chore.",
+        "The product started on stub JSON files, meaning nothing persisted, seeded accounts were never really loginable, and true multi-user interaction between a real owner and a real customer was impossible. Every feature silently owned the whole file and lock conflicts were constant.",
       businessSolution:
-        "Created an intuitive application combining real-time budget tracking with milestone achievements, helping users build lasting financial discipline.",
+        "Migrated the entire data layer onto Supabase Postgres via Drizzle ORM in three phases — auth and profiles, bookings and payments, then the full owner CRM — keeping typecheck and lint green at every step, with object storage handling photos and avatars.",
       keyFeatures: [
-        "Clean interactive dashboard for income and expense tracking",
-        "Goal-oriented savings milestones and progress visualizer",
-        "Responsive layout optimized for mobile and desktop workflows",
-        "Modular full-stack architecture with secure data persistence",
+        "Three role-scoped surfaces: public landing, diner booking flows, and a full owner CRM",
+        "Custom jose-signed sessions with bcrypt password hashing and Google OAuth — no external auth SDK",
+        "Owner-side staff hiring and officer role management, plus booking operations and analytics",
+        "Parallel-route modals for booking, staff, and tables so each screen works as overlay and standalone route",
+        "Seeded database of 46 users, 27 restaurants, 93 tables, 122 bookings, 75 payments, and 32 reviews",
       ],
       techStack: [
         "Next.js",
-        "React",
         "TypeScript",
-        "Tailwind CSS",
-        "PostgreSQL",
+        "Drizzle ORM",
         "Supabase",
+        "PostgreSQL",
+        "Tailwind CSS 4",
+        "Zod",
+        "jose",
       ],
-      githubUrl: "https://github.com/ItsLyy",
+      githubUrl: "https://github.com/ItsLyy/restaurant-booking-next-app",
     },
   ],
 
@@ -338,13 +342,18 @@ export const aiMemory: AiMemoryData = {
       keywords: [
         "projects",
         "portfolio",
-        "finquest",
+        "res.book",
+        "resbook",
+        "restaurant",
+        "dental",
+        "dentist",
+        "booking",
         "work",
         "showcase",
         "built",
       ],
       answer:
-        "Key projects include:\n1. **Portfolio Website v1**: A modern, high-performance portfolio with dynamic projects, Drizzle ORM, and this intelligent AI assistant.\n2. **FinQuest**: A fintech and gamified personal finance tracker combining expense analytics with milestone goals.\nVisit the /projects page to explore details and code repositories!",
+        "Key projects include:\n1. **Integrity Dental Care**: A healthcare marketing and booking platform for a Bandung dental practice that replaces patient anxiety with transparency — evidence-first Tell-Show-Do treatment reviews, a non-diagnostic clinic assistant that escalates to a human, and a booking flow built as a parallel-route intercept.\n2. **Res.Book**: A full-stack restaurant table-booking platform and owner CRM, migrated from stub JSON files onto Supabase Postgres with Drizzle ORM, featuring custom signed sessions, staff management, and booking analytics.\nVisit the /projects page to explore details and code repositories!",
     },
     {
       question: "Where is Irly located and what are his working arrangements?",
@@ -464,7 +473,7 @@ I can tell you all about Irly's full-stack engineering expertise, recent project
 
 What would you like to know? Feel free to ask about:
 - **Background & Full-stack Skills**
-- **Featured Projects (Portfolio, FinQuest)**
+- **Featured Projects (Integrity Dental Care, Res.Book)**
 - **Business Value & Services**
 - **Hiring / Collaboration Availability**`;
   }
@@ -510,7 +519,12 @@ Would you like to explore his **projects**, learn about his **services**, or dis
   if (
     q.includes("project") ||
     q.includes("portfolio") ||
-    q.includes("finquest") ||
+    q.includes("res.book") ||
+    q.includes("resbook") ||
+    q.includes("restaurant") ||
+    q.includes("dental") ||
+    q.includes("dentist") ||
+    q.includes("booking") ||
     q.includes("built") ||
     q.includes("work") ||
     q.includes("showcase")
@@ -644,7 +658,7 @@ ${e.businessImpact.map((b) => `- ${b}`).join("\n")}
 
 As **Irly's AI Assistant**, I specialize in answering questions about:
 - Irly's **Full-Stack Development skills** (Next.js, TypeScript, PostgreSQL, Node.js)
-- **Featured Projects** such as this Portfolio and FinQuest
+- **Featured Projects** such as Integrity Dental Care and Res.Book
 - **Business Offerings** (MVP development, End-to-End apps, Performance optimization)
 - **Hiring & Collaboration** inquiries
 
